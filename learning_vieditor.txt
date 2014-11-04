@@ -1,0 +1,62 @@
+Learning VI editor:
+*************************************************
+
+vi filename = opening a file in vi editor
+
+Command mode
+------------
+<esc> = to enter the 'command mode'
+This mode is used to = moving cursor, deleting text
+vi editor starts up in 'command mode'
+
+h = move the cursor left
+j = move the cursor down
+k = move the cursor up
+l = move the cursor right
+
+x = delete character under cursor
+4x = delete four characters from the cursor
+X (uppercase) = delete character before the cursor
+dw = delete word
+4dw = delete three words
+dd = delete line
+2dd = delete two lines
+D (uppercase) = delete from cursor position to the end of the line
+
+r = replacement of character
+cw = replacement of work (place cursor to the start of the word)
+a = append (place the cursor on last letter of line)
+o = insert blank line below the current line
+O (uppercase) = insert black line above the current line
+u = undo most recent edits
+U = undo all edits on single line
+
+w = forward word by word
+b = backward word by word
+0 (zero) = to beginning of line
+$ = to end of line
+H = to top line of screen
+M = to middle line of screen
+L = to last line of screen
+1G = to first line of file
+G = to last line of file
+
+<Control>f = scroll forward one screen
+<Control>b = scroll backward one screen
+<Control>d = scroll down one-half screen
+<Control>u = scroll up one-half screen
+
+/ = to seach the word
+n = search forward
+N = search backward
+
+ZZ = save file and then quit
+:w = save file
+:q! = discard changes and quit file
+
+
+Insert mode
+-----------
+i = to enter into the 'insert mode'
+vi editor does not warp, it just breaks at the edge of the screen
+
