@@ -1,0 +1,38 @@
+git related information:
+------------------------
+
+1. go to the project dir.
+2. in proj dir, you will have all the project realted files.
+$ git init					% it will create .git subdir in the project dir.
+3. if you want to get a copy of project, then you will clone it.
+$ git clone					% local copy of a git repository, so you can modify it.
+
+git related commands:
+---------------------
+
+$ git status 					% view the status of your files in working dir and staging area
+$ git status -s
+
+<first col> staging area; <second col> working dir
+
+$ git add filename1 filename2 filename3 	% adds content to the staging area
+$ git diff
+$ git diff --cached
+$ git diff HEAD
+$ git diff --stat
+$ git commit 					% records a snapshot of staging area
+$ git config --global user.name 'your name'
+$ git config --global user.email mail@mail.com
+$ git commit -m 'chandra shaker balure success'
+$ git commit -a 				% automatically stage all tracked, modified files
+$ git reset HEAD -- filename1 			% undo changes and commits
+$ git reset --soft HEAD~			% undo last commit, and put files back on the stage
+$ git reset --hard HEAD				% undo last commit, unstage files, AND undo any changes in the working dir
+$ git rm 					% remove entries from staging area, AND removes from the disk also
+$ git rm --cached				% remove entries from staging area, AND leave file in working dir
+$ git stash					% saving working dir AND index state, AND puts it in the stack
+$ git stash list				% view stashes currently on the stack
+$ git stash apply				% grab item from the stash and apply to current working dir
+$ git stash drop				% remove item from the stash list
+
+
