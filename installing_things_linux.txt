@@ -1,0 +1,19 @@
+steps followed are:
+********************************
+
+>> sudo add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
+>> sudo apt-get update
+>> sudo apt-get install libpcl-all
+
+>> sudo apt-get install git
+>> git --version
+
+>> git clone https://github.com/tv42/gitosis
+>> cd gitosis/
+>> python steup.py install
+
+>> sudo apt-get install python-setuptools
+
+>> sudo apt-get install nsis
+
+>> sudo apt-get install qt4-qmake

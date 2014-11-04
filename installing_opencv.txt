@@ -1,0 +1,109 @@
+Installing opencv
+***********************************************************************************
+
+I am intalling opencv-2.4.10 on ubuntu 14.04
+
+Required packages:
+------------------
+1. GCC 4.4.x or later
+	Check the gcc version:
+	>> gcc -v
+	If GCC 4.4.x or later is not present then install:
+	>> sudp apt-get install build-essential
+2. cmake 
+	Check for the cmake version:
+	>> cmake -v
+	>> dpkg --get-selections | grep cmake
+	If it is installed, then it displays:
+	$ cmake 	install
+	$ cmake-data	install
+3. git
+	Check if git is installed or not:
+	>> git --version
+	If not installed, then do this:
+	>> sudo apt-get install git
+4. GTK 
+	Check if GTK is installed or not:
+	>> dpkg -l "*gtk*" | grep ii
+	>> dpkg -l libgtk2.0-0 libgtk-3-0 % it checks for both GTK-2 and GTK-3
+	>> dpkg -l libgtk2.0-dev
+	If not installed, then do this:
+	>> sudo apt-get install libgtk2.0-dev
+5. pkg-config
+	Check which version is installed:
+	>> pkg-version --version
+6. Python
+	Check which version is installed:
+	>> python --version
+	If python is not installed, then do this:
+	>> sudo apt-get install python
+7. Numpy
+	Check which version is installed:
+	>> import numpy
+	>> numpy.version.version
+	>> dpkg --list | grep python-numpy
+	If numpy is not installed, then do this:
+	>> sudo apt-get install python-numpy
+8. FFMPEG
+	Check which version is installed:
+	>> pkg --list | grep ffmpeg
+
+************************************************************************************
+
+1. Get the opencv souce code from GITHUB or SOURCEFORGE:
+	Go to htts://github.com/itseez/opencv.git
+	Or source can be cloned from git repository using:
+		>> cd <working dir>
+		>> git clone htts://github.com/itseez/opencv.git
+	Or go to http://sourceforge.net/projects/opencvlibrary/
+2. Building the source code using cmake:
+	1. Create a dir anywhere:
+		>> mkdir ~/opencv
+	2. Copy the downloaded source code in the dir created in step 2.1.
+		Go to the location where source code is saved, then do this:
+			>> cp -fvr <filename> ~/opencv
+		Now source code is in saved in dir created in step 2.1
+		>> cd ~/opencv
+		>> mkdir release
+		>> cd release
+		>> cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
+	3. From the release/ dir:
+		>> make
+		>> sudo make install
+
+************************************************************************************
+
+Using OpenCV with gcc and cmake:
+
+1. create a program using opencv, and save it as filename.c or filename.cpp
+	#include <stdio.h>
+	#include <opencv2/opencv.hpp>
+
+	using namespace cv;
+		
+	int main(int argc, char** argv )
+	{
+
+	}
+2. create a cmake file:
+	cmake_minimum_required(VERSION 2.8)
+	project( DisplayImage )
+	find_package( OpenCV REQUIRED )
+	add_executable( DisplayImage DisplayImage.cpp )
+	target_link_libraries( DisplayImage ${OpenCV_LIBS} )
+3. Compile and build the written code:
+	>> cd <DisplayImage_directory>
+	>> cmake .
+	>> make
+4. See the output:
+	>> ./dispImage lena.jpg
+
+************************************************************************************
+
+Using opencv with the command line:
+
+1. create a program using opencv, and save it as filename.c or filename.cpp
+2. compile and execute using command:
+	>> g++ filename.cpp `pkg-config --cflags --libs opencv`
+
+************************************************************************************

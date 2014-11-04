@@ -1,0 +1,136 @@
+------------------------------------
+Learning MAGIC: 
+------------------------------------
+
+>> man magic
+
+
+------------------------------------
+Magic speciality:
+------------------------------------
+1. its a layout editor
+2. it knows the build-in knowledge of layout rules
+3. it has 'plow' operation to stretch and compact cells
+4. it has 'routing tool' for global interconnections
+
+
+------------------------------------
+key macros (keyboard shortcuts):
+------------------------------------
+${CAD_ROOT}/magic/sys/.magicrc, normally /usr/local/lib/magic/sys/.magicrc
+
+g: display grid, 
+g <again>: remove grid
+z: zoom in
+shift+z: zoom out
+.: execute the last typed long command
+u: undo
+s: select
+s <again>: will show all the connections through the contact
+,: to remove all the selection
+c: copy
+
+Layer names are:
+    pw or pwell
+    nw or nwell
+    capwell or cw or cwell
+    highvoltnwell or hnw or hnwell or hvnwell
+    highvoltpwell or hpw or hpwell or hvpwell
+    p or poly or polysilicon or red
+    el or electrode or p2 or poly2
+    cap or capacitor or pcap or polycap
+    wcap or wellcap or wellcapacitor
+    green or ndiff or ndiffusion
+    brown or pdiff or pdiffusion
+    highvoltndiffusion or hndiff or hvndiff
+    highvoltpdiffusion or hpdiff or hvpdiff
+    blue or m1 or metal1
+    m2 or metal2 or purple
+    cyan or m3 or metal3
+    nfet or ntransistor
+    pfet or ptransistor
+    enfet or entransistor
+    epfet or eptransistor
+    doublentransistor or nffet or nfg or nfloatg or nfloating-gate
+    doubleptransistor or pffet or pfg or pfloatg or pfloating-gate
+    highvoltntransistor or hnfet or hvnfet
+    highvoltptransistor or hpfet or hvpfet
+    cl or co or col or coll or collector
+    em or emit or emitter
+    pb or pbase
+    bccdiffusion or bd
+    nbccdiffusion or nbd
+    pc or pcontact or polycontact or polycut
+    ndc or ndcontact or ndiffcut
+    pdc or pdcontact or pdiffcut
+    highvoltndcontact or hndc or hndiffcut
+    highvoltpdcontact or hpdc or hpdiffcut
+    capc or capcontact or cc or ccontact
+    ec or econtact or electrodecontact or p2c or poly2contact
+    clc or coc or colc or colcontact or collectorcontact
+    emc or emitcontact or emittercontact
+    pbasecontact or pbc or pbcontact
+    nbccdiffcontact or nbdc
+    m2c or m2contact or m2cut or v or via
+    m3c or m3contact or m3cut or v2 or via2
+    ppc or ppcontact or psc or psubstratepcontact or pwc or pwcontact
+    nnc or nncontact or nsc or nsubstratencontact or nwc or nwcontact
+    pohmic or ppd or ppdiff or psd or psubstratepdiff
+    nnd or nndiff or nohmic or nsd or nsubstratendiff
+    highvoltpsubcontact or hpsc or hpwcontact
+    highvoltnsubcontact or hnsc or hnwcontact
+    highvoltpsubdiff or hpohmic or hpsd
+    highvoltnsubdiff or hnohmic or hnsd
+    ndop or ndoping or nplusdoping
+    pdop or pdoping or pplusdoping
+    gc or gcontact or genericcontact
+    open or subopen or substrateopen
+    pdiffstop or pdiffusionstop or pstop
+    pad
+    glass
+    mag or magnet
+    f or fence
+    r or rotate
+
+
+------------------------------------
+long commands (magic commands):
+------------------------------------
+
+Command should prefix : or ;
+Multiple commands on one line should be seperated by semicolon
+;<command> help
+
+;grid off
+;grid on
+;drc count
+;drc off
+;drc on
+;drc why
+;erase
+;extract
+;label <string>
+;plow <direction>
+;move <direction> <amount>
+;paint <layers>
+;select area
+;move r 4
+;select clear
+
+------------------------------------
+Execute your layout
+------------------------------------
+
+To check the layout, we have to run the layout.
+Before that we have to get the netlist.
+Steps to get the netlist are:
+1. extract all
+But this will give filename.ext file which is not helpful.
+2. ext2spice filename (without extension)
+
+
+------------------------------------
+ALL ABOUT LAYOUT:
+------------------------------------
+1. cell contains three things: paint, labels, subcells
+2. 

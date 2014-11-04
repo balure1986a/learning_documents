@@ -1,0 +1,38 @@
+Basic commands:
+********************************************
+
+g++ filename.cpp `pkg-config --cflags --libs opencv`
+
+img=cv2.imread('filename.jpg',0);
+	CV_LOAD_IMAGE_UNCHANGED (<0) loads the image as is (including the alpha channel if present)
+	CV_LOAD_IMAGE_GRAYSCALE ( 0) loads the image as an intensity one
+	CV_LOAD_IMAGE_COLOR (>0) loads the image in the RGB format
+
+void imshow(const string& winname, InputArray mat)
+cv2.imshow(winname, mat) → None
+
+void destroyAllWindows()
+cv2.destroyAllWindows();
+
+void resizeWindow(const string& winname, int width, int height)
+cv2.resizeWindow(winname, width, height)
+
+cv2.imwrite('filename.jpg',img);
+cvtColor(source, destination, CV_param);
+	CV_BGR2GRAY, CV_RGB2GRAY, CV_GRAY2BGR, CV_GRAY2RGB
+	CV_BGR2HSV, CV_RGB2HSV, CV_HSV2BGR, CV_HSV2RGB
+	CV_BGR2HLS, CV_RGB2HLS, CV_HLS2BGR, CV_HLS2RGB
+	CV_BGR2Lab, CV_RGB2Lab, CV_Lab2BGR, CV_Lab2RGB
+	CV_BGR2Luv, CV_RGB2Luv, CV_Luv2BGR, CV_Luv2RGB
+
+void namedWindow(const string& winname, int flags=WINDOW_AUTOSIZE )
+cv2.namedWindow(winname[, flags])
+	CV_WINDOW_AUTOSIZE
+	CV_WINDOW_NORMAL
+
+int waitKey(int delay=0)
+cv2.waitKey([delay]) → retval
+	Wait forever until user presses the key
+
+
+

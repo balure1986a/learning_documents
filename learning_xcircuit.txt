@@ -1,0 +1,48 @@
+#################################
+Learning xcircuit:
+#################################
+
+---------------------------------
+Keyboard shorcuts:
+---------------------------------
+
+-For using keyboard shortcuts, you should place cursor in the drawing area
+
+button 1: left button (does the operation)
+button 2: middle button (selects the place)
+button 3: right button (cancels the operation)
+
+esc: cancel entire operation
+w: wire
+a: arc
+e: edit
+s: spline
+z: zoom in
+Z: zoom out
+c: copy the thing
+r: rotate clockwise
+R: rotate anticlockwise
+p: pan the area (brings the cursor position in the center)
+f: flip horizontally
+F: flip vertically
+u: undo the previous operation
+t: for writting TEXT in the drawing area
+b: drawing box
+l: go to library
+L: go to the library directory
+X: to exchange the drawing order
+]: lower stack order
+m: make user defined object
+(shift + .) >: go to edit mode of the object
+(shift + ,) <: come back from the edit mode to the drawing mode
+
+%: to bring the tcl console
+>> graphic make gradient {0 0} 5 red gray50
+
+black square (bottom left): to bring the drawing area to full view
+
+selection:
+1. button 1 press and drag
+2. button 2 click
+3. button 2 press and drag
+4. x: to unselect the cursor position
