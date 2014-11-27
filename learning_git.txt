@@ -1,0 +1,220 @@
+Learning GIT for windows:
+#########################
+
+TO INSTALL
+
+>> apt-get install git
+
+OR
+INSTALL FROM SOURCE, first install the dependencies...
+
+>> apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
+
+DOWNLOAD THE SOURCE, and compile and install...
+
+>> tar -zxf git-1.9.1.tar.gz
+>> cd git-1.9.1
+>> make configure
+>> ./configure --prefix=/usr
+>> make all doc info
+>> sudo make install install-doc install-html install-info
+
+FOR UPDATES...
+
+>> git clone git://git.kernel.org/pub/scm/git/git.git
+
+################################ Configure the GIT:
+
+>> git config --global user.name balure_1986a	% it sets the user name
+>> git config --global user.email balure_1986a@yahoo.co.in	% it sets the pwd
+>> git config --global core.editor emacs	% it sets the editor
+>> git config --list	% it will list out all the configuration settings
+>> git config user.name 	% it will show the user name
+
+################################ For getting help on the GIT commands:
+
+>> git help <verb>	% it opens up the locally stored manual page
+>> git <verb> --help	% it opens up the locally stored manual page
+>> man git-<verb>	% it opens up the locally stored manual page
+
+################################ Getting GIT repository:
+
+>> git init
+>> git add *.c
+>> git add LICENSE
+>> git add ...		% add several files which needs to be commited
+>> git commit -m 'initial project version'
+>> git clone https://github.com/libgit2/libgit2 choose_folder_name	
+	% if choose_folder_name is empty, then it clones in the dir with the same name as is available in the 
+>> git clone git:\\path\to\repo.git
+>> git clone user@server:path\to\repo.git
+
+################################ Recording changes:
+
+>> git status
+>> git status -s	% short status
+>> git status --short
+>> echo 'project_name' > README.txt		% adding another file to the GIT dir
+>> git status -s	% it will show the staged and UN-staged files in the dir
+	?? untracked, unstaged
+	A  added to the staging area
+	M  modified
+	D  deleted
+	R  renamed
+	left: file is staged
+	right: file is modified
+
+################################ Ignoring files to be added to GIT:
+
+>> cat .gitignore
+	*.[oa]
+	*~
+	# this is command
+	
+	# no .a files
+	*.a
+
+	# but do track lib.a, even though you're ignoring .a files above
+	!lib.a
+
+	# only ignore the root TODO file, not subdir/TODO
+	/TODO
+
+	# ignore all files in the build/ directory
+	build/
+
+	# ignore doc/notes.txt, but not doc/server/arch.txt
+	doc/*.txt
+
+	# ignore all .txt files in the doc/ directory
+	doc/**/*.txt
+
+>> git diff
+>> git diff --cached
+
+################################ Commiting the files:
+
+>> git commit	% the message should be written in the editor
+>> git commit -m "some text messages"
+
+>> git rm filename.txt		% it removes from the staging area
+
+>> git mv file_from file_to
+	>> mv file_from file_to
+	>> git rm file_from
+	>> git add file_to
+
+################################ view commit history
+	
+>> git log 	% it shows the last commit
+>> git log --pretty=oneline 	% other options are =short, =full, =fuller
+>> git log --pretty=format:"%h - %an, %ar : %s"
+	%H Commit hash
+	%h Abbreviated commit hash
+	%T Tree hash
+	%t Abbreviated tree hash
+	%P Parent hashes
+	%p Abbreviated parent hashes
+	%an Author name
+	%ae Author e-mail
+	%ad Author date (format respects the –date= option)
+	%ar Author date, relative
+	%cn Committer name
+	%ce Committer email
+	%cd Committer date
+	%cr Committer date, relative
+	%s Subject
+>> git log --pretty=format:"%h %s" --graph
+>> git log --since=2.weeks
+
+################################ Undoing things:
+
+>> git commit -m "initial commit"
+>> git add missed_file
+>> git commit --amend
+
+>> git reset HEAD filename.txt
+
+>> git checkout -- filename.txt
+
+################################ Tagging:
+
+>> git tag 	% it lists the available tags
+>> git tag -l 'v1.8.5*'		% it lists all the similar tags
+>> git tag -a v1.9 -m 'my version 1.9'		% it create a tag
+>> git show v1.9
+
+>> git tag v1.9-lw		% light weight tags
+>> git show v1.9-lw
+
+>> git tag -a v1.99 9fceb02
+>> git show v1.99
+
+################################ Creating a new branch
+
+>> git branch branch_name	% it creates a new branch, but still HEAD is pointing to master
+>> git log --oneline --decorate		% it shows where the HEAD is pointing to
+>> git checkout branch_name		% it switches HEAD to the branch_name
+
+>> vim test.rb
+>> git commit -a -m 'made a change' 	% it commits to the new branch created recently, where HEAD is pointing
+
+>> git checkout master 		% it takes the HEAD to master now, and reverted the files back to the master snapshot.
+
+>> vim test.rb
+>> git commit -a -m 'made another changes'		% it commits to the master, but with new branch.
+>> git log --oneline --decorate --graph --all 	% it shows the log of the commits
+
+################################ Branching and Merging
+
+>> git checkout -b new_branch	% it creates new branch, and point HEAD to it.
+	>> git branch new_branch
+	>> git checkout new_branch
+>> vim index.html
+>> git commit -a -m 'solved some issue'
+
+>> git checkout master 			% switch back to master
+
+>> git checkout -b new_issue	% switch back to new issue
+>> vim index.html
+>> git commit -a -m 'fixing the new issue'
+
+>> git checkout master			% switch back to master
+>> git merge new_issue			% merge new issue with master
+
+>> git delete -d new_issue		% it deletes the new issue, as master is also pointing to same
+
+>> git checkout new_branch
+>> vim index.html
+>> git commit -a -m 'fixed something in new branch'
+
+>> git checkout master		% it merges the new branch with master
+>> git merge new_branch
+>> git delete -d new_branch
+
+>> git mergetool 	% it walks you through the conflicts during the merge process.
+
+################################ Branch management
+
+>> git branch 	% it simply lists the branch
+>> git branch -v 	% to see the last commit
+>> git branch --merged
+>> git branch --no-merged
+>> git branch -D some_branch 	% it fociebly deletes the branch
+
+################################ Pushing
+
+>> git push branch_name		% it shares the branch with the world
+>> git branch -vv 	% to see what tracking branchs we have set up
+
+################################ Rebasing (for cleaner history)
+
+>> git branch -b exp
+>> vim something.html
+>> git commit -a -m 'added something.html'
+
+>> git rebase master
+
+>> git checkout master		% go to master, and do fast forward merge
+>> git merge exp
+
