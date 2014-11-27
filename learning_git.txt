@@ -205,6 +205,8 @@ FOR UPDATES...
 ################################ Pushing
 
 >> git push branch_name		% it shares the branch with the world
+>> git push origin HEAD
+>> git push origin master
 >> git branch -vv 	% to see what tracking branchs we have set up
 
 ################################ Rebasing (for cleaner history)
